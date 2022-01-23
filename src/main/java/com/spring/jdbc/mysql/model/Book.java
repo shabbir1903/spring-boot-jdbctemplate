@@ -1,9 +1,17 @@
 package com.spring.jdbc.mysql.model;
 
+import javax.validation.constraints.NotBlank;
+
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@EntityScan
 public class Book {
 
   private long id;
+  
+  @NotBlank(message = "Title is mandatory")
   private String title;
+  
   private String description;
   private boolean published;
 

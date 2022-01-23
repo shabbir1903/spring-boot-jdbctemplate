@@ -3,6 +3,8 @@ package com.spring.jdbc.mysql.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,7 +63,7 @@ public class BookController {
   }
 
   @PostMapping("/books")
-  public ResponseEntity<String> createBook(@RequestBody Book tutorial) {
+  public ResponseEntity<String> createBook(@Valid @RequestBody Book tutorial) {
     try {
     	bookRepository.save(new Book(tutorial.getTitle(), tutorial.getDescription(), false));
       return new ResponseEntity<>("Books was created successfully.", HttpStatus.CREATED);
